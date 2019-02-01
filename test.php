@@ -27,3 +27,12 @@ $select="select * from che_admin limit 5";
 $result=$con->query($select);
 $arra=$result->fetch_assoc();
 print_r($arra);
+class dbname {
+
+    function __construct() {
+        echo "<h1>我已经被执行了</h1>";
+        
+    }
+
+}
+$obj=new dbname();
