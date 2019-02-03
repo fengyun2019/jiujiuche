@@ -21,14 +21,27 @@ class mysql{
 	 * @return bool  连接成功或不成功 
 	 **/
 	function connect($config){
+            print_r($config);            
 		extract($config);
-		if(!($con = mysqli_connect($dbhost,$dbuser,$dbpsw))){//mysql_connect连接数据库函数
+                echo "dbms=".$dbms."<br/>dbhost=".$dbhost."<br/>dbuser=".$dbuser."<br/>dbname=".$dbname."<br/>dbpsw=".$dbpsw."<br/>dbcharset=".$dbcharset;
+                $dsn=$dbms.":host=".$dbhost.":3306,dbname=".$dbname;
+                echo "<br>".$dsn."<br>";
+                try {
+                    
+               $con=new PDO($dsn,$dbuser,$dbpsw);
+                /* $con=new PDO("mysql:host=localhost:3306,dbname=jjchdata","root","admin");*/
+                $con->query("set names ".$dbcharset);//使用mysql_query 设置编码  格式：mysql_query("set names utf8")
+                echo "数据库链接成功";
+                } catch (Exception $ex) {
+                  die ("Error!: " . $ex->getMessage() . "<br/>");
+                }
+	/*	if(!($con = mysqli_connect($dbhost,$dbuser,$dbpsw))){//mysql_connect连接数据库函数
 			$this->err(mysql_error());
 		}
 		if(!mysql_select_db($dbname,$con)){//mysql_select_db选择库的函数
 			$this->err(mysql_error());
-		}
-		mysql_query("set names ".$dbcharset);//使用mysql_query 设置编码  格式：mysql_query("set names utf8")
+		}*/
+		
 	}
 	/**
 	 * 执行sql语句

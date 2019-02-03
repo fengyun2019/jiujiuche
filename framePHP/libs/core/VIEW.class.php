@@ -5,6 +5,7 @@ class VIEW {
 	public static $view;
 
 	public static function init($viewtype,$config){
+                echo "我是view：：init的变量".$viewtype;
 		self::$view = new $viewtype;
 		/*$smarty = new Smarty();//实例化smarty
 		$smarty->left_delimiter=$config["left_delimiter"];//左定界符
@@ -18,9 +19,10 @@ class VIEW {
 
 	}
 
-	public static function assign($data){
+	public static function assign($data){               
 		foreach($data as $key=>$value){
-			self::$view->assign($key, $value);
+                    echo "<br/>key=".$key."&nbsp;value=".$value;
+                   	self::$view->assign($key, $value);
 		}
 	}
 

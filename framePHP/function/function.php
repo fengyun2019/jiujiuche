@@ -1,6 +1,6 @@
 <?php
 	function C($name, $method){
-		require_once('/libs/controller/'.$name.'Controller.class.php');
+            	require_once('libs/controller/'.$name.'Controller.class.php');
 		eval('$obj = new '.$name.'Controller();$obj->'.$method.'();');
 	}
 

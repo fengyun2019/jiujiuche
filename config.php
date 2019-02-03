@@ -3,7 +3,7 @@
 		'adminconfig' => array(
 			  'cache_dir' => 'data/cache',  'compile_dir' => 'data/template_c','template_dir'=>'tpl/admin'),
 		'dbconfig' => array(
-			'dbhost' => 'localhost', 'dbuser'=>'jjch', 'dbpsw' => 'jjch' , 'dbname' => 'JJCHdata', 'dbcharset' => 'utf8'),
+			'dbms'=>'mysql','dbhost' => 'localhost', 'dbuser'=>'jjch', 'dbpsw' => 'jjch' , 'dbname' => 'JJCHdata', 'dbcharset' => 'gb18030'),
                 'appconfig'=>array(
                         'cache_dir' => 'data/cache',  'compile_dir' => 'data/template_c','template_dir'=>'tpl/app' )
 	);

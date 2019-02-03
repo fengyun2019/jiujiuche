@@ -1,6 +1,6 @@
 <?php
 	class testView{
-		function display($data){//瑙嗗浘鐨勪綔鐢ㄦ槸灏嗗彇寰楃殑鏁版嵁杩涜缁勭粐銆佺編鍖栫瓑锛屽苟鏈�缁堝悜鐢ㄦ埛缁堢杈撳嚭
+		function display($data){//视图的作用是将取得的数据进行组织、美化等，并最终向用户终端输出
 			echo $data;
 		}
 	}
