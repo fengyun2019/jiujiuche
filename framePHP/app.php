@@ -1,6 +1,6 @@
 <?php
 	$currentdir = dirname(__FILE__);
-        echo "打印文件路径：".$currentdir."/include.list.php";
+        echo "打印文件路径：".$currentdir."/include.list.php<br/>";
 	include_once($currentdir.'/include.list.php');
 	foreach($paths as $path){
 		include_once($currentdir.'/'.$path);
@@ -10,11 +10,11 @@
 		public static $method;
 		private static $config;
 		private static function init_db($database="mysql"){
-			DB::init($database, self::$config['dbconfig']);
+                    DB::init($database, self::$config['dbconfig']);
 		}
 		private static function init_view($dir='app'){
                     echo "<h1>dir=".$dir."</h1>";
-                    if($dir==""){
+                    if($dir!=""){
                         VIEW::init('Smarty', self::$config['appconfig']);  
                         echo "配置APP模版路径成功";
                     }elseif($dir=="admin"){
@@ -33,9 +33,10 @@
 		}
 		public static function run($config,$template_dir=''){
 			self::$config = $config;
+                        echo "<hr>";  //var_dump(self::$config);
 			self::init_db();
                         echo "template_dir=".$template_dir;
-			self::init_view($template_dir);
+			self::init_view();
                         
 			self::init_controllor();
 			self::init_method();

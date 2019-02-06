@@ -1,11 +1,21 @@
 <?php
 	$config = array(
 		'adminconfig' => array(
-			  'cache_dir' => 'data/cache',  'compile_dir' => 'data/template_c','template_dir'=>'tpl/admin'),
+                         'cache_dir' => 'data/cache', 
+                         'compile_dir' => 'data/template_c',
+                         'template_dir'=>'tpl/admin'),
 		'dbconfig' => array(
-			'dbms'=>'mysql','dbhost' => 'localhost', 'dbuser'=>'jjch', 'dbpsw' => 'jjch' , 'dbname' => 'JJCHdata', 'dbcharset' => 'gb18030'),
+			'dbtype'=>'mysql',
+                        'dbhost' => 'localhost',
+                        'dbuser'=>'jjch',
+                        'dbpsw' => 'jjch' ,
+                        'dbport'=>'3306',
+                        'dbname' => 'JJCHdata',
+                        'dbcharset' => 'gb18030'),
                 'appconfig'=>array(
-                        'cache_dir' => 'data/cache',  'compile_dir' => 'data/template_c','template_dir'=>'tpl/app' )
+                        'cache_dir' => 'data/cache', 
+                        'compile_dir' => 'data/template_c',
+                        'template_dir'=>'tpl/app' )
 	);
 /*$smarty->template_dir = '/WWW/testSmarty/test/tpl';
 //模板文件编译后得到的文件的路径
