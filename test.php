@@ -2,7 +2,8 @@
 
 header("Content-Type: text/html;charset=gb18030");
 require_once "framePHP/libs/db/mysql.class.php";
-$mysql=new mysql(array());
+require_once 'framePHP/libs/core/validate.class.php';
+/*$mysql=new mysql(array());
 $query="select * from che_admin";
 $exe=$mysql->findAll($query);
 $exe2=$mysql->findOne($query);
@@ -13,6 +14,12 @@ echo "<hr>";
 var_dump($exe2);
 echo "<hr>";
 var_dump($exe3);
+//$exe4=$mysql->insert("che_admin",array('name'=>'·çÔÆ','tel'=>'13281007262','city'=>'³É¶¼',"time"=>"now()"));
+//print_r($exe4);
+//$exe5=$mysql->update("che_admin", array('tel'=>"18512544100"), "id>13");
+//print_r($exe5);
+$exe6=$mysql->del("che_admin", "id>15");
+print_r($exe6);
 class dbname  {
 
     function __construct() {
@@ -29,3 +36,7 @@ class dbname  {
 $obj=new dbname();
 $s=3;
 $obj->direct($s);
+echo '<hr>';*/
+$validate=new Validate();
+$validate->doimg();
+var_dump($validate->getCode());

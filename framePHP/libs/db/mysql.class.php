@@ -107,23 +107,30 @@ class mysql{
 	 * 
 	 */
     public function insert($table,$arr){
-            //$sql = "insert into 表名(多个字段) values(多个值)";
-            foreach($arr as $key=>$value){//foreach循环数组
-                    $value = mysql_real_escape_string($value);
+            //$sql = "insert into 表名(多个字段) values(多个值)";          
+            foreach($arr as $key=>$value){//foreach循环数组                
+                    //$value = mysql_real_escape_string($value);
                     $keyArr[] = "`".$key."`";//把$arr数组当中的键名保存到$keyArr数组当中
                     $valueArr[] = "'".$value."'";//把$arr数组当中的键值保存到$valueArr当中，因为值多为字符串，而sql语句里面insert当中如果值是字符串的话要加单引号，所以这个地方要加上单引号
             }
             $keys = implode(",",$keyArr);//implode函数是把数组组合成字符串 implode(分隔符，数组)
             $values = implode(",",$valueArr);
             $sql = "insert into ".$table."(".$keys.") values(".$values.")";//sql的插入语句  格式：insert into 表(多个字段)values(多个值)
+            echo "<p>sql语句是：".$sql."</p>";
            try{ $this->pdo->query($sql);//调用类自身的query(执行)方法执行这条sql语句  注：$this指代自身
-            return $this->pdo->mysql_insert_id();
+               $insertid= $this->lastid();
+               return $insertid;
            } catch (Exception $ex){
                $this->my_err($ex);
            }
     }
+    protected function lastid(){
+           $last_id = $this->pdo->query("select last_insert_id()");
+           $lastid=$last_id->fetch();
+           return $lastid;
+    }
 
-	/**
+    /**
 	*修改函数
 	*
 	*@param string $table 表名
@@ -133,7 +140,7 @@ class mysql{
     public function update($table,$arr,$where){
             //update 表名 set 字段=字段值 where ……
             foreach($arr as $key=>$value){
-                    $value = mysql_real_escape_string($value);
+                   // $value = mysql_real_escape_string($value);
                     $keyAndvalueArr[] = "`".$key."`='".$value."'";
             }
             $keyAndvalues = implode(",",$keyAndvalueArr);
